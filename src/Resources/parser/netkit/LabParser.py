@@ -10,8 +10,8 @@ class LabParser(object):
     def parse(path):
         lab_conf_path = os.path.join(path, 'lab.conf')
 
-        if not os.path.exists(lab_conf_path):
-            raise FileNotFoundError("No lab.conf in given directory: %s\n" % path)
+        if not os.path.isfile(lab_conf_path) or os.path.getsize(lab_conf_path) == 0:
+            raise FileNotFoundError("No valid lab.conf in given directory: %s\n" % path)
 
         # Reads lab.conf in memory so it is faster.
         with open(lab_conf_path, 'r') as lab_file:

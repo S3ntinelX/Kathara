@@ -10,7 +10,7 @@ class DepParser(object):
     def parse(path):
         lab_dep_path = os.path.join(path, 'lab.dep')
 
-        if not os.path.exists(lab_dep_path):
+        if not os.path.isfile(lab_dep_path) or os.path.getsize(lab_dep_path) == 0:
             return None
 
         dependencies = {}

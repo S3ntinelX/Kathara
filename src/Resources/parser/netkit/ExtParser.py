@@ -10,7 +10,7 @@ class ExtParser(object):
     def parse(path):
         lab_ext_path = os.path.join(path, 'lab.ext')
 
-        if not os.path.exists(lab_ext_path):
+        if not os.path.isfile(lab_ext_path) or os.path.getsize(lab_ext_path) == 0:
             return
 
         # Reads lab.ext in memory so it is faster.
